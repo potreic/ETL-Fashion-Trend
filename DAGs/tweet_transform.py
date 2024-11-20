@@ -1,8 +1,15 @@
 from airflow import DAG
 from airflow.operators.python_operator import PythonOperator
-from airflow.sensors.python import PythonSensor
 from datetime import datetime, timedelta
-from ETL import transform_data  # Import your functions
+from ETL import transform_data  # Import your transform function
+
+def run_transformation(**kwargs):
+    input_filename = kwargs['dag_run'].conf.get('input_filename', 'default_input')
+    output_filename = kwargs['dag_run'].conf.get('output_filename', input_filename)  # Default to the same name
+    transform_data(
+        input_filename=input_filename,
+        output_filename=output_filename
+    )
 
 # Define DAG default arguments
 default_args = {
@@ -17,17 +24,15 @@ default_args = {
 with DAG(
     'transform_tweets',
     default_args=default_args,
-    description='Transform tweets after all seasonal data is scraped',
+    description='Transform tweets after extraction',
     schedule_interval=None,  # Triggered by the Extract DAG
     start_date=datetime(2023, 1, 1),
     catchup=False,
 ) as dag:
 
-    # Task 3: Apply transformations to the concatenated file
+    # Task: Apply transformations
     transform_task = PythonOperator(
         task_id='transform_data',
-        python_callable=lambda: transform_data(
-            input_filename='{file input}',
-            output_filename='{file output}'
-        ),
+        python_callable=run_transformation,
+        provide_context=True,  # Ensure we can access `dag_run.conf`
     )
