@@ -58,6 +58,6 @@ These sources provide complementary datasets for fashion trend analysis.
 ### Documentation
 <!--
 - **Documentation**: [View Documentation](https://example.com/documentation)
-- **YouTube**: [Watch on YouTube](https://example.com/youtube-video)
  -->
+- **YouTube**: [Watch on YouTube](https://youtu.be/hJgMExFzhNg)
 - **Article Post**: [Read the Article Post](https://potreic.medium.com/etl-automation-airflow-d1a5f263e36e)
