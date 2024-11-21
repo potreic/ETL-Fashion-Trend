@@ -6,7 +6,7 @@ This project demonstrates an ETL (Extract, Transform, Load) automation pipeline 
 ## 💃 Overview Project
 This project automates the ETL (Extract, Transform, Load) pipeline to process data from multiple sources, integrate it, and provide insights. It focuses on analyzing trends in fashion-related data by leveraging Apache Airflow to manage the workflow. The end goal is to predict seasonal trends and generate valuable reports. The trend is collected based on keyword such as ```fur jacket```, ```cardigan```, ```coat```, etc. 
 
-**📂 Directory Layout ** (🔍 where to look at..)
+📂 **Directory Layout** (🔍 where to look at..)
 ```
 ETL-Fashion-Tren-Analysis/  
 │  
@@ -47,7 +47,7 @@ These sources provide complementary datasets for fashion trend analysis.
    - JSON Data: Nested structures in JSON are flattened, and key-value pairs are extracted for time-series growth metrics
 3. Data integration
    - The cleaned datasets are merged into a unified pandas DataFrame with consistent time intervals
-   - Columns such as time_weekly, data_tweet, and data_pinterest are created to combine metrics from both sources
+   - Columns such as ```time_weekly```, ```data_tweet```, and ```data_pinterest``` are created to combine metrics from both sources
 
 ## ✨ Load
 - The integrated DataFrame is uploaded into a PostgreSQL database serving as the data warehouse.
