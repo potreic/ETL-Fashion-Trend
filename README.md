@@ -31,17 +31,17 @@ ETL-Fashion-Tren-Analysis/
 
 Apache Airflow orchestrates each step of the ETL process through DAGs.
 
-## 👜 Data Sources
+### 👜 Data Sources
 The pipeline pulls data from two primary sources:
 1. X (formerly Twitter): Data is extracted via web scraping and exported as a CSV file containing user engagement metrics and other relevant attributes.
 2. Pinterest: Data is fetched using an API, providing JSON files containing growth trends and user interaction data.
 These sources provide complementary datasets for fashion trend analysis.
 
-## ✨ Extract
+### ✨ Extract
 1. Web Scraping (X): Engagement metrics such as likes, retweets, and comments are collected and saved as a CSV file.
 2. API Call (Pinterest): JSON data is retrieved, including attributes related to growth trends and trend behaviors to the respect of time (yearly, monthly, weekly)
    
-## ✨ Transform & Integration
+### ✨ Transform & Integration
 1. Cleaning and reformatting
    - CSV Data: Engagement data is cleaned and converted into a time-series format for weekly analysis
    - JSON Data: Nested structures in JSON are flattened, and key-value pairs are extracted for time-series growth metrics
@@ -49,13 +49,13 @@ These sources provide complementary datasets for fashion trend analysis.
    - The cleaned datasets are merged into a unified pandas DataFrame with consistent time intervals
    - Columns such as ```time_weekly```, ```data_tweet```, and ```data_pinterest``` are created to combine metrics from both sources
 
-## ✨ Load
+### ✨ Load
 - The integrated DataFrame is uploaded into a PostgreSQL database serving as the data warehouse.
 - The database provides a centralized storage solution for the processed data, enabling efficient querying and further analysis.
 
 ---
 
-### Documentation
+## Documentation
 <!--
 - **Documentation**: [View Documentation](https://example.com/documentation)
  -->
